@@ -1,0 +1,885 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap");
+
+/* ==========================================
+   SON — SHAPE OF NEST
+   GLOBAL DESIGN SYSTEM
+========================================== */
+
+:root {
+  font-family: "Montserrat", sans-serif;
+  color: #332b25;
+  background: #f4f2e9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --son-bg: #f4f2e9;
+  --son-text: #332b25;
+  --son-gold: #a18766;
+  --son-muted: #786b5f;
+  --son-border: #d6c8b6;
+  --font-body: "Montserrat", sans-serif;
+  --font-display: "Lora", Georgia, serif;
+}
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: auto;
+
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--son-bg);
+  color: var(--son-text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+main {
+  position: relative;
+  width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: #b5d9c9;
+  color: #332b25;
+}
+
+/* ==========================================
+   HEADER — TRANSPARENT BUBBLE GLASS
+   Single source of truth (desktop + mobile)
+========================================== */
+
+.site-header.son-floating-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 9999;
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 17px 5%;
+  background: transparent;
+  pointer-events: none;
+  transition: padding 0.35s ease;
+}
+
+.son-header-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) 145px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1600px;
+  min-height: 74px;
+  margin: 0 auto;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.065);
+  -webkit-backdrop-filter: blur(7px) saturate(135%);
+  backdrop-filter: blur(7px) saturate(135%);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.85),
+    inset 0 -2px 5px rgba(112, 88, 62, 0.06),
+    0 12px 34px rgba(67, 51, 35, 0.06);
+  pointer-events: auto;
+  transition: min-height 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.son-header-shell::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4%;
+  right: 4%;
+  height: 45%;
+  border-radius: 100px 100px 65% 65%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent);
+  pointer-events: none;
+}
+
+.site-header.son-floating-header.is-scrolled {
+  padding: 10px 7%;
+}
+
+.son-floating-header.is-scrolled .son-header-shell {
+  min-height: 62px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.9),
+    0 15px 40px rgba(67, 51, 35, 0.08);
+}
+
+.son-floating-header .brand-logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  line-height: 1;
+}
+
+.son-floating-header .brand-logo .logo {
+  display: block;
+  width: 104px;
+  height: 52px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.son-floating-header .brand-logo:hover .logo {
+  opacity: 0.83;
+  transform: translateY(-2px);
+}
+
+.son-floating-header .nav-links {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.65vw, 27px);
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.son-floating-header .nav-links a {
+  position: relative;
+  flex-shrink: 0;
+  padding: 12px 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.son-floating-header .nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  height: 1px;
+  background: #9a8060;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.son-floating-header .nav-links a:hover::after,
+.son-floating-header .nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+.son-floating-header .nav-links a.active { color: #9a8060; }
+
+.son-floating-header .header-contact {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  justify-self: end;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 12px 16px;
+  border: 1px solid rgba(110, 91, 71, 0.42);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.son-floating-header .header-contact:hover {
+  background: #332b25;
+  color: #fff;
+}
+
+.son-floating-header .menu-toggle { display: none; }
+
+@media (max-width: 1100px) {
+  .site-header.son-floating-header,
+  .site-header.son-floating-header.is-scrolled { padding: 10px 4%; }
+  .son-header-shell {
+    grid-template-columns: 1fr auto;
+    min-height: 64px;
+    padding: 0 19px;
+  }
+  .son-floating-header .brand-logo .logo { width: 92px; height: 47px; }
+  .son-floating-header .header-contact { display: none; }
+  .son-floating-header .menu-toggle {
+    position: relative;
+    z-index: 4;
+    display: block;
+    justify-self: end;
+    border: 0;
+    padding: 12px;
+    background: transparent;
+    color: #332b25;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  .son-floating-header .nav-links {
+    position: absolute;
+    top: calc(100% + 9px);
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 22px;
+    background: rgba(250, 248, 241, 0.94);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 18px 40px rgba(67, 51, 35, 0.09);
+  }
+  .son-floating-header .nav-links.open { display: flex; }
+  .son-floating-header .nav-links a {
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(154, 128, 96, 0.15);
+  }
+  .son-floating-header .nav-links a:last-child { border-bottom: 0; }
+}
+
+@media (max-width: 480px) {
+  .son-header-shell { min-height: 58px; padding: 0 14px; }
+  .son-floating-header .brand-logo .logo { width: 85px; height: 43px; }
+}
+
+/* ==========================================
+   HERO — KEEP ORIGINAL DESIGN
+========================================== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 740px;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  /* Không dùng isolation: isolate
+     vì sẽ che hệ thống hình chuyển động */
+  isolation: auto;
+  background:
+    radial-gradient(
+      ellipse at 52% 48%,
+      #e3eee4 0%,
+      #edf1e8 35%,
+      #f4f2e9 75%
+    );
+}
+
+/* HERO BACKGROUND GLOW */
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(85px);
+}
+
+.hero-glow-left {
+  width: 430px;
+  height: 430px;
+  left: -150px;
+  bottom: -200px;
+  background: rgba(160, 207, 191, 0.34);
+}
+
+.hero-glow-right {
+  width: 320px;
+  height: 320px;
+  right: -100px;
+  top: 20%;
+  background: rgba(236, 201, 153, 0.25);
+}
+
+/* TOP LINE */
+
+.hero-topline {
+  position: absolute;
+  z-index: 10;
+  top: 135px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  opacity: 0.65;
+}
+
+/* MAIN CONTENT */
+
+.hero-content {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9%;
+  pointer-events: none;
+}
+
+.hero-heading {
+  position: relative;
+  margin-top: -25px;
+}
+
+.hero-eyebrow {
+  display: block;
+  margin-bottom: 25px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  color: #977958;
+}
+
+.hero-heading h1 {
+  font-family: var(--font-display);
+  font-size: clamp(65px, 8.2vw, 150px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.065em;
+  white-space: nowrap;
+}
+
+.hero-heading h1 em {
+  display: inline-block;
+  margin-left: 0.45em;
+  font-weight: 400;
+  color: #9a8060;
+}
+
+/* HERO DESCRIPTION */
+
+.hero-description {
+  align-self: center;
+  max-width: 230px;
+  margin-top: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.small-line {
+  display: block;
+  width: 45px;
+  height: 1px;
+  margin-bottom: 24px;
+  background: #9a8060;
+}
+
+.hero-description p {
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* EXPLORE BUTTON */
+
+.explore-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 23px;
+  border-radius: 100px;
+  background: #332b25;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  pointer-events: auto;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.explore-button:hover {
+  background: #9a8060;
+  transform: translateY(-4px);
+}
+
+/* HERO BOTTOM */
+
+.hero-bottom {
+  position: absolute;
+  z-index: 10;
+  bottom: 45px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hero-index {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+
+.hero-index span:first-child {
+  font-family: var(--font-display);
+  font-size: 21px;
+  letter-spacing: 0;
+}
+
+/* SCROLL INDICATOR */
+
+.scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  pointer-events: auto;
+}
+
+.scroll-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #928578;
+  border-radius: 50%;
+  font-size: 20px;
+  animation: arrowMove 1.8s ease-in-out infinite;
+}
+
+@keyframes arrowMove {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* HERO SIDE TEXT */
+
+.hero-side-text {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  right: 22px;
+  writing-mode: vertical-rl;
+  font-size: 9px;
+  letter-spacing: 0.23em;
+  opacity: 0.55;
+}
+
+/* ==========================================
+   GLOBAL SCROLL MORPHING SYSTEM
+   SINGLE VISUAL STAGE
+========================================== */
+
+.son-visual-stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  z-index: 2;
+  pointer-events: none;
+  background: transparent;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* HERO NEST CANVAS */
+
+.son-visual-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.son-visual-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* MORPHING IMAGES */
+
+.son-morph-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: min(34vw, 480px);
+  height: min(34vw, 480px);
+
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  filter: drop-shadow(
+    0 20px 30px rgba(69, 45, 23, 0.08)
+  );
+}
+
+/* ==========================================
+   SECTION LAYER MANAGEMENT
+========================================== */
+
+/* Section nền trong suốt để thấy hình */
+.son-story-section {
+  position: relative;
+  isolation: auto;
+  background: transparent;
+}
+
+/* Nội dung ở phía trước hình chuyển động */
+
+.son-story-copy,
+.son-story-top,
+.son-story-bottom,
+.son-gallery,
+.son-review-area {
+  position: relative;
+  z-index: 8;
+}
+
+/* Contact không che hình */
+
+.son-contact-new {
+  position: relative;
+  isolation: auto;
+  background: transparent;
+}
+
+/* Tiêu đề và form luôn ở trên ảnh */
+
+.son-contact-inner {
+  position: relative;
+  z-index: 10;
+}
+
+.son-contact-title,
+.son-contact-intro,
+.son-contact-new-form,
+.son-form-success {
+  position: relative;
+  z-index: 11;
+}
+
+/* Trường nhập liệu có nền để giữ dễ đọc */
+
+.son-contact-new-form input,
+.son-contact-new-form textarea {
+  position: relative;
+  background: rgba(250, 248, 243, 0.96);
+  border: 1px solid #d0c1af;
+  color: #332b25;
+  z-index: 12;
+}
+
+.son-contact-new-form input:focus,
+.son-contact-new-form textarea:focus {
+  background: #fffdf8;
+  border-color: #a18766;
+}
+
+/* Thông báo gửi thành công */
+
+.son-form-success {
+  background: rgba(250, 248, 243, 0.96);
+}
+
+/* Phần kết và footer */
+
+.son-finished-scene,
+.son-new-footer {
+  position: relative;
+  z-index: 8;
+}
+
+.son-finished-target {
+  position: relative;
+  pointer-events: none;
+}
+
+/* ==========================================
+   TABLET — HERO & VISUAL RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  /* HERO */
+  .hero {
+    min-height: 670px;
+  }
+  .hero-topline {
+    top: 112px;
+    font-size: 8px;
+  }
+  .hero-content {
+    padding: 0 7%;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .hero-heading {
+    margin-top: -120px;
+  }
+  .hero-heading h1 {
+    font-size: clamp(54px, 10vw, 90px);
+  }
+  .hero-description {
+    position: absolute;
+    bottom: 130px;
+    left: 7%;
+    margin: 0;
+  }
+  .hero-description p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .hero-side-text {
+    display: none;
+  }
+  /* MORPHING IMAGES */
+  .son-morph-image {
+    width: min(55vw, 500px);
+    height: min(55vw, 500px);
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+  .hero-heading {
+    margin-top: -170px;
+  }
+  .hero-heading h1 {
+    font-size: clamp(45px, 12vw, 65px);
+  }
+  .hero-heading h1 em {
+    margin-left: 0.2em;
+  }
+  .hero-eyebrow {
+    font-size: 9px;
+  }
+  .hero-description {
+    bottom: 120px;
+  }
+  .hero-bottom {
+    bottom: 26px;
+  }
+  .hero-index span:last-child {
+    display: none;
+  }
+  .scroll-indicator {
+    gap: 10px;
+    font-size: 8px;
+  }
+  .scroll-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  .son-morph-image {
+    width: min(70vw, 380px);
+    height: min(70vw, 380px);
+  }
+
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .scroll-arrow {
+    animation: none;
+  }
+  .explore-button,
+  .son-floating-header .nav-links a,
+  .son-floating-header .header-contact,
+  .site-header.son-floating-header,
+  .son-header-shell {
+    transition: none;
+  }
+}
+
+
+
+/* ==========================================
+   TYPOGRAPHY — CONSISTENT VIETNAMESE SUPPORT
+   Titles: Lora / UI and form: Montserrat
+========================================== */
+body, button, input, textarea, select {
+  font-family: var(--font-body);
+}
+
+.hero-heading h1,
+.hero-description p,
+.son-story-title,
+.son-story-copy h3,
+.son-gallery-heading h3,
+.son-gallery-meta h4,
+.son-contact-title,
+.son-contact-left h3,
+.son-form-success h3 {
+  font-family: var(--font-display);
+}
+
+.son-contact-right .son-contact-new-form label,
+.son-contact-right .son-field label,
+.son-contact-right .son-contact-new-form input,
+.son-contact-right .son-contact-new-form textarea,
+.son-contact-right .son-contact-new-form button,
+.son-contact-right .son-field-error,
+.son-contact-right .son-form-error {
+  font-family: var(--font-body);
+}
+
+.son-contact-right .son-contact-new-form input::placeholder,
+.son-contact-right .son-contact-new-form textarea::placeholder {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  .son-contact-right .son-contact-new-form input,
+  .son-contact-right .son-contact-new-form textarea {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   SON — FULL PAGE SECTION SCROLL
+========================================= */
+
+html {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+  scroll-padding-top: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Mỗi section chiếm tối thiểu một màn hình */
+
+.hero,
+#ve-son,
+#duong-chat-tu-yen,
+#san-pham,
+#khach-hang,
+#lien-he,
+#about,
+#essence,
+#products,
+#reviews,
+#contact {
+  min-height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Giữ nguyên Hero */
+.hero {
+  height: 100svh;
+}
+
+/* Không cắt nội dung ở section dài */
+.son-story-section,
+.son-contact-new {
+  height: auto;
+  overflow: visible;
+}
+
+/* ScrollNest vẫn theo sát màn hình */
+.son-visual-stage {
+  position: fixed;
+  pointer-events: none;
+}
+
+/* Mobile: ưu tiên cuộn tự nhiên có điểm dừng */
+@media (max-width: 767px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+}

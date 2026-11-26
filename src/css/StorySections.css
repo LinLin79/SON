@@ -1,0 +1,320 @@
+/* SON — StorySections.css | Bản gộp, không trùng selector Contact */
+:root{--son-ink:#332b25;--son-gold:#a18766;--son-muted:#786b5f;--son-border:#d6c8b6;--son-cream:#f4f2e9}
+
+/* SHARED STORY */
+.son-story-section,.son-contact-new{position:relative;color:var(--son-ink);background:transparent;isolation:auto}
+.son-story-section{min-height:100svh}
+.son-story-top,.son-story-bottom{position:relative;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:20px;width:90%;margin:0 auto;color:#987b59;font-size:10px;font-weight:600;letter-spacing:.18em}
+.son-story-top{padding:35px 0 20px;border-bottom:1px solid #d8cbbb}
+.son-story-bottom{padding:24px 0 35px;border-top:1px solid #d8cbbb}
+.son-story-bottom a:hover{color:var(--son-ink)}
+.son-story-layout{width:88%;max-width:1550px;min-height:max(600px,76vh);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:5%}
+.story-image-right .son-story-copy{grid-column:1;grid-row:1;padding: 8em 0 1em}
+.story-image-right .son-story-image-space{grid-column:2;grid-row:1}
+.story-image-left .son-story-copy{grid-column:2;grid-row:1;padding: 8em 0 1em}
+.story-image-left .son-story-image-space{grid-column:1;grid-row:1}
+.son-story-copy{position:relative;z-index:8;max-width:650px}
+.son-story-eyebrow{display:block;margin-bottom:28px;color:var(--son-gold);font-size:10px;font-weight:600;letter-spacing:.25em}
+.son-story-title{font-family:var(--font-display);font-size:clamp(56px,6.6vw,120px);line-height:1.04;letter-spacing:-.065em;font-weight:400;margin-bottom:35px}
+.son-story-title em{font-weight:400;color:var(--son-gold)}
+.son-story-line{display:block;width:55px;height:1px;margin-bottom:28px;background:var(--son-gold)}
+.son-story-copy h3{font-family:var(--font-display);font-weight:400;font-size:clamp(21px,2vw,29px);line-height:1.4;margin-bottom:22px}
+.son-story-copy p{max-width:440px;color:#776a5e;font-size:14px;line-height:1.9;margin-bottom:16px}
+.son-story-image-space{position:relative;min-height:480px;pointer-events:none}
+.son-story-image-space span{position:absolute;right:5%;bottom:8%;z-index:8;color:var(--son-gold);font-size:10px;letter-spacing:.2em}
+.story-image-left .son-story-image-space span{right:auto;left:5%}
+
+/* PRODUCTS CAROUSEL */
+.son-products-section .products-story-layout{min-height:max(570px,72vh)}
+.son-gallery{position:relative;z-index:9;width:90%;max-width:1550px;margin:0 auto 85px;padding:28px 0 0;border-top:1px solid #d7c9b7}
+.son-gallery-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:30px}
+.son-gallery-heading h3{font-family:var(--font-display);font-size:clamp(29px,3.6vw,52px);font-weight:400;letter-spacing:-.04em}
+.son-gallery-heading h3 em{color:var(--son-gold);font-weight:400}
+.son-gallery-controls{display:flex;align-items:center;gap:12px}
+.son-gallery-counter{margin-right:12px;color:#897663;font-size:11px;letter-spacing:.12em}
+.son-gallery-controls button{display:grid;place-items:center;width:49px;height:49px;border:1px solid #bbaa95;border-radius:50%;background:rgba(255,255,255,.65);color:var(--son-ink);font-size:23px;cursor:pointer;transition:background .3s,color .3s}
+.son-gallery-controls button:hover:not(:disabled){background:var(--son-ink);color:white}
+.son-gallery-controls button:disabled{opacity:.3;cursor:not-allowed}
+.son-gallery-grid{display:flex;gap:22px}
+.son-gallery-card{flex:1 1 0;min-width:0;animation:son-card-enter .4s ease both}
+@keyframes son-card-enter{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.son-gallery-photo{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#e7e0d5}
+.son-gallery-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.son-gallery-card:hover img{transform:scale(1.045)}
+.son-gallery-photo>span{position:absolute;top:14px;left:14px;background:rgba(248,246,240,.9);padding:9px 12px;font-size:9px;letter-spacing:.16em}
+.son-gallery-meta{display:flex;flex-direction:column;gap:8px;padding:18px 0 24px;border-bottom:1px solid #d7c9b7}
+.son-gallery-meta h4{font-family:var(--font-display);font-size:23px;font-weight:400}
+.son-gallery-meta span{color:#917d66;font-size:12px}
+
+/* REVIEWS */
+.son-review-area{max-width:445px;margin-top:32px;padding:25px 28px;border:1px solid #d5c6b3;background:rgba(255,255,255,.44)}
+.son-review-tag{display:block;margin-bottom:15px;color:var(--son-gold);font-size:10px;letter-spacing:.18em}
+.son-review-area p{font-family:var(--font-display);font-size:18px;line-height:1.6}
+.son-review-area a{display:inline-block;margin-top:17px;color:#8b6d4b;font-size:10px;font-weight:700;letter-spacing:.15em}
+
+/* CONTACT — 1 BỐ CỤC DUY NHẤT */
+.son-contact-new{min-height:100svh;padding-bottom:20px;overflow:hidden}
+.son-contact-inner.son-contact-split{position:relative;z-index:10;width:90%;max-width:1500px;min-height:calc(100svh - 145px);margin:0 auto;padding:36px 0;display:grid;grid-template-columns:minmax(0,360px) minmax(0,320px);align-items:center;justify-content:space-between;gap:clamp(24px,4vw,70px);text-align:left}
+.son-contact-left{position:relative;z-index:10;max-width:360px;min-width:0;padding:8em 0 1em}
+.son-contact-left .son-story-eyebrow{margin-bottom:28px}
+.son-contact-title{font-family:var(--font-display);font-weight:400;letter-spacing:-.07em;line-height:1.03}
+.son-contact-title em{font-weight:400;color:var(--son-gold)}
+.son-contact-left .son-contact-title{font-size:clamp(58px,6.5vw,105px);margin-bottom:30px}
+.son-contact-divider{display:block;width:50px;height:1px;margin-bottom:24px;background:var(--son-gold)}
+.son-contact-left h3{font-family:var(--font-display);font-size:25px;font-weight:400;line-height:1.35;margin-bottom:16px}
+.son-contact-left .son-contact-intro{max-width:320px;margin:0 0 30px;color:var(--son-muted);font-size:13px;line-height:1.85}
+.son-contact-signature{color:var(--son-gold);font-size:10px;letter-spacing:.2em}
+.son-contact-right{position:relative;z-index:12;width:100%;max-width:320px;min-width:0;justify-self:end}
+.son-contact-right .son-contact-new-form{display:flex;flex-direction:column;gap:13px;width:100%;text-align:left}
+.son-contact-right .son-form-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.son-contact-right .son-field,.son-contact-right .son-contact-new-form>label{display:flex;flex-direction:column;gap:6px;min-width:0,}
+.son-contact-right .son-field label,.son-contact-right .son-contact-new-form>label{color:#96795a;font-size:9px;font-weight:700;letter-spacing:.15em}
+.son-contact-right input:not([type="hidden"]),.son-contact-right textarea{display:block;width:100%;min-width:0;padding:11px 12px;border:1px solid #d0c1af;border-radius:3px;outline:none;background:rgba(250,248,243,.98);color:var(--son-ink);font-family:var(--font-body);font-size:12px;line-height:1.5;letter-spacing:normal;transition:border-color .2s,box-shadow .2s}
+.son-contact-right textarea{min-height:86px;resize:vertical}
+.son-contact-right input:focus,.son-contact-right textarea:focus{border-color:var(--son-gold);box-shadow:0 0 0 2px rgba(161,135,102,.12)}
+.son-contact-right input[aria-invalid="true"],.son-contact-right textarea[aria-invalid="true"]{border-color:#b65445;background:#fff9f7}
+.son-field-error,.son-form-error{display:block;color:#b14d3e;font-size:11px;font-weight:400;line-height:1.45;letter-spacing:0}
+.son-form-submit-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
+.son-form-submit-row>span{color:#95816b;font-size:9px}
+.son-form-submit-row button{padding:13px 19px;border:0;border-radius:100px;background:var(--son-ink);color:white;font-size:9px;font-weight:700;letter-spacing:.12em;cursor:pointer;transition:background .25s}
+.son-form-submit-row button:hover:not(:disabled){background:#9a8060}
+.son-form-submit-row button:disabled{opacity:.55;cursor:not-allowed}
+.son-form-success{padding:26px 20px;text-align:center;border:1px solid #d3c4b0;background:rgba(250,248,243,.98)}
+.son-form-success h3{font-family:var(--font-display);font-size:35px;font-weight:400}
+.son-form-success p{margin:15px auto;color:#76695d;font-size:12px;line-height:1.8}
+.son-form-success button{border:0;background:transparent;color:#96795a;font-size:10px;font-weight:700;letter-spacing:.12em;cursor:pointer}
+.son-success-symbol{display:block;margin-bottom:10px;font-size:30px;color:var(--son-gold)}
+/* Cảnh cuối cũ được ẩn vì chén yến đã được ScrollNest đặt giữa màn hình */
+.son-finished-scene{display:none}
+.son-new-footer{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;width:90%;margin:0 auto;padding:20px 0 15px;border-top:1px solid var(--son-border);color:#8d7963;font-size:10px;letter-spacing:.15em}
+.son-new-footer>div{display:flex;flex-direction:column;gap:3px}
+.son-new-footer strong{font-family:var(--font-display);font-size:39px;letter-spacing:.15em;font-weight:400;color:var(--son-ink)}
+.son-new-footer a:hover{color:var(--son-ink)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+ .son-story-layout{gap:2%}
+ .son-story-title{font-size:clamp(50px,6.3vw,82px)}
+ .son-story-image-space{min-height:400px}
+ .son-contact-inner.son-contact-split{grid-template-columns:minmax(0,290px) minmax(0,300px);gap:20px}
+ .son-contact-left .son-contact-title{font-size:clamp(58px,7vw,90px)}
+ .son-contact-right{max-width:300px}
+}
+@media(max-width:767px){
+ .son-story-section{min-height:760px}
+ .son-story-top,.son-story-bottom{font-size:8px}
+ .son-story-layout{min-height:700px;position:relative;display:block;padding:65px 0 30px}
+ .story-image-left .son-story-copy,.story-image-right .son-story-copy{position:relative;width:100%;z-index:8}
+ .son-story-title{font-size:clamp(47px,10vw,70px);margin-bottom:25px}
+ .son-story-copy p{max-width:335px;font-size:12px;line-height:1.75}
+ .son-story-copy h3{font-size:21px}
+ .son-story-image-space{min-height:265px}
+ .son-story-image-space span{bottom:10px;right:0;font-size:8px}
+ .son-products-section .products-story-layout{min-height:680px}
+ .son-gallery{width:88%;margin-bottom:60px}
+ .son-gallery-heading{align-items:flex-start;flex-direction:column}
+ .son-gallery-controls button{width:43px;height:43px}
+ .son-gallery-grid{gap:12px}
+ .son-gallery-meta h4{font-size:20px}
+ .son-review-area{padding:19px;max-width:315px}
+ .son-contact-new{min-height:auto;overflow:visible}
+ .son-contact-inner.son-contact-split{width:88%;min-height:auto;padding:65px 0;display:flex;flex-direction:column;align-items:stretch;gap:42px}
+ .son-contact-left,.son-contact-right{max-width:100%;width:100%}
+ .son-contact-left .son-contact-title{font-size:clamp(58px,12vw,90px)}
+ .son-contact-right .son-form-row{grid-template-columns:1fr}
+ .son-contact-right input:not([type="hidden"]),.son-contact-right textarea{font-size:16px;padding:14px}
+ .son-form-submit-row{align-items:stretch;flex-direction:column}
+ .son-form-submit-row button{width:100%;padding:16px}
+ .son-new-footer{flex-wrap:wrap;font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.son-gallery-card{animation:none}.son-gallery-photo img,.son-gallery-controls button,.son-contact-right input,.son-contact-right textarea,.son-form-submit-row button{transition:none}}
+
+/* ==========================================
+   SON — SEPARATE PRODUCT COLLECTION
+========================================== */
+
+/* SECTION 04 — PRODUCT INTRO */
+
+#san-pham {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#san-pham .products-story-layout {
+  width: 100%;
+}
+
+.son-products-discover {
+  position: absolute;
+  bottom: 40px;
+  right: 6%;
+  z-index: 12;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #9a8060;
+}
+
+.son-products-discover span {
+  font-size: 22px;
+}
+
+/* SECTION 05 — COLLECTION */
+
+.son-collection-section {
+  position: relative;
+  z-index: 3;
+
+  min-height: 100svh;
+  padding: 115px 6% 55px;
+
+  display: flex;
+  align-items: center;
+
+  border-top: 1px solid rgba(154,128,96,0.3);
+  background: #f4f2e9;
+}
+
+.son-collection-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 8;
+}
+
+/* COLLECTION TITLE */
+
+.son-collection-top {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.son-collection-top .hero-eyebrow {
+  margin-bottom: 15px;
+}
+
+.son-collection-top h2 {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5vw, 76px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.son-collection-top h2 em {
+  color: #a18766;
+  font-weight: 400;
+}
+
+.son-collection-top p {
+  max-width: 480px;
+  margin: 16px auto 0;
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.8;
+  color: #786b5f;
+}
+
+/* GALLERY */
+
+.son-collection-section .son-gallery {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.son-collection-section .son-gallery-heading {
+  margin-bottom: 20px;
+}
+
+.son-collection-section .son-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.son-collection-section .son-gallery-card {
+  min-width: 0;
+}
+
+.son-collection-section .son-gallery-photo {
+  position: relative;
+  height: clamp(180px, 22vw, 280px);
+  overflow: hidden;
+}
+
+.son-collection-section .son-gallery-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.son-collection-section .son-gallery-card:hover img {
+  transform: scale(1.04);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .son-collection-section {
+    padding: 105px 6% 55px;
+    align-items: flex-start;
+  }
+
+  .son-collection-section .son-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  #san-pham {
+    min-height: 100svh;
+  }
+
+  .son-products-discover {
+    bottom: 25px;
+  }
+
+  .son-collection-section {
+    min-height: 100svh;
+    padding: 100px 6% 45px;
+  }
+
+  .son-collection-top h2 {
+    font-size: clamp(40px, 10vw, 60px);
+  }
+
+  .son-collection-section .son-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .son-collection-section .son-gallery-photo {
+    height: 240px;
+  }
+}
+
+/* TYPOGRAPHY — SON */
+.son-story-title, .son-contact-title { letter-spacing: -0.045em; }
+.son-story-copy p, .son-contact-intro, .son-review-area p { overflow-wrap: break-word; }
+
+#duong-chat-tu-yen,
+#san-pham,
+#khach-hang,
+#lien-he {
+  border-top: 1px solid rgba(154, 128, 96, 0.3);
+}
