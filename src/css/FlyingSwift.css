@@ -1,86 +1,85 @@
-
 .son-bird-flight {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  overflow: hidden;
-  pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 .son-bird-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 220px;
-  animation: sonSwiftFlight 24s linear infinite;
-  will-change: transform;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    animation: sonSwiftFlight 24s linear infinite;
+    will-change: transform;
 }
 
 
 .son-bird-video video {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 
-  /* Lật chim để đầu hướng sang phải */
-  transform: scaleX(-1);
-  transform-origin: center;
+    /* Lật chim để đầu hướng sang phải */
+    transform: scaleX(-1);
+    transform-origin: center;
 }
 
 
 @keyframes sonSwiftFlight {
-  0% {
-    transform: translate(-15vw, 40vh)
-      scale(0.45) rotate(-10deg);
-    opacity: 0;
-  }
+    0% {
+        transform: translate(-15vw, 40vh) scale(0.45) rotate(-10deg);
+        opacity: 0;
+    }
 
-  15% {
-    opacity: 1;
-  }
+    15% {
+        opacity: 1;
+    }
 
-  45% {
-    transform: translate(45vw, 18vh)
-      scale(0.75) rotate(-15deg);
-  }
+    45% {
+        transform: translate(45vw, 18vh) scale(0.75) rotate(-15deg);
+    }
 
-  75% {
-    transform: translate(80vw, 48vh)
-      scale(0.6) rotate(12deg);
-    opacity: 1;
-  }
+    75% {
+        transform: translate(80vw, 48vh) scale(0.6) rotate(12deg);
+        opacity: 1;
+    }
 
-  100% {
-    transform: translate(110vw, 25vh)
-      scale(0.3) rotate(-8deg);
-    opacity: 0;
-  }
+    100% {
+        transform: translate(110vw, 25vh) scale(0.3) rotate(-8deg);
+        opacity: 0;
+    }
 }
 
 @keyframes sonSwiftFlight {
-  0% {
-    transform: translate(-15vw, 40vh) scale(0.45);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  45% {
-    transform: translate(45vw, 18vh) scale(0.75);
-  }
-  75% {
-    transform: translate(80vw, 48vh) scale(0.6);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(110vw, 25vh) scale(0.3);
-    opacity: 0;
-  }
+    0% {
+        transform: translate(-15vw, 40vh) scale(0.45);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    45% {
+        transform: translate(45vw, 18vh) scale(0.75);
+    }
+
+    75% {
+        transform: translate(80vw, 48vh) scale(0.6);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(110vw, 25vh) scale(0.3);
+        opacity: 0;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .son-bird-video {
-    display: none;
-  }
+    .son-bird-video {
+        display: none;
+    }
 }

@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -6,294 +5,223 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
 const SECTION_IDS = [
-  ["trang-chu", "home"],
-  ["ve-son", "about"],
-  ["duong-chat-tu-yen", "essence"],
-  ["san-pham", "products"],
-  ["bo-suu-tap"],
-  ["khach-hang", "reviews"],
-  ["lien-he", "contact"],
+	["trang-chu", "home"],
+	["ve-son", "about"],
+	["duong-chat-tu-yen", "essence"],
+	["san-pham", "products"],
+	["bo-suu-tap"],
+	["khach-hang", "reviews"],
+	["lien-he", "contact"],
 ];
 
 const getSections = (): HTMLElement[] => {
-  return SECTION_IDS.map((ids) => {
-    for (const id of ids) {
-      const element = document.getElementById(id);
+	return SECTION_IDS.map((ids) => {
+		for (const id of ids) {
+			const element = document.getElementById(id);
 
-      if (element) return element;
-    }
+			if (element) return element;
+		}
 
-    return null;
-  }).filter(
-    (element): element is HTMLElement =>
-      element instanceof HTMLElement
-  );
+		return null;
+	}).filter((element): element is HTMLElement => element instanceof HTMLElement);
 };
 
-const getTop = (element: HTMLElement) =>
-  element.getBoundingClientRect().top +
-  window.scrollY;
+const getTop = (element: HTMLElement) => element.getBoundingClientRect().top + window.scrollY;
 
 export default function FullPageScroll() {
-  useEffect(() => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    let scrolling = false;
-    let cooldownUntil = 0;
-
-    let wheelAmount = 0;
-    let wheelDirection = 0;
-    let lastWheelTime = 0;
-
-    let gestureUsed = false;
-    let quietTimer: number | undefined;
-
-    let tween: gsap.core.Tween | null = null;
-
-    // ======================================
-    // GSAP SMOOTH SCROLL
-    // ======================================
-
-    const animateTo = (
-      target: number,
-      duration = 1.25
-    ) => {
-      scrolling = true;
-      gestureUsed = true;
-      wheelAmount = 0;
+	useEffect(() => {
+		const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      tween?.kill();
+		let scrolling = false;
+		let cooldownUntil = 0;
 
-      const maxScroll = Math.max(
-        0,
-        document.documentElement.scrollHeight -
-          window.innerHeight
-      );
+		let wheelAmount = 0;
+		let wheelDirection = 0;
+		let lastWheelTime = 0;
 
-      const destination = gsap.utils.clamp(
-        0,
-        maxScroll,
-        target
-      );
-
-      tween = gsap.to(window, {
-        scrollTo: {
-          y: destination,
-          autoKill: false,
-        },
-
-        duration: reducedMotion ? 0 : duration,
-
-        ease: "power2.inOut",
-
-        overwrite: "auto",
-
-        onComplete: () => {
-          scrolling = false;
-
-          // Hạn chế cuộn quán tính
-          cooldownUntil = performance.now() + 300;
-        },
-      });
-    };
-
-    // ======================================
-    // SECTION ĐANG HIỂN THỊ
-    // ======================================
-
-    const findActiveIndex = (
-      sections: HTMLElement[]
-    ) => {
-      const center = window.innerHeight * 0.5;
+		let gestureUsed = false;
+		let quietTimer: number | undefined;
 
-      const found = sections.findIndex((section) => {
-        const rect = section.getBoundingClientRect();
+		let tween: gsap.core.Tween | null = null;
 
-        return (
-          rect.top <= center &&
-          rect.bottom > center
-        );
-      });
+		// ======================================
+		// GSAP SMOOTH SCROLL
+		// ======================================
 
-      if (found >= 0) return found;
+		const animateTo = (target: number, duration = 1.25) => {
+			scrolling = true;
+			gestureUsed = true;
+			wheelAmount = 0;
 
-      return sections.reduce(
-        (best, section, index) => {
-          const distance = Math.abs(
-            section.getBoundingClientRect().top
-          );
+			tween?.kill();
 
-          const previous = Math.abs(
-            sections[best].getBoundingClientRect().top
-          );
+			const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
 
-          return distance < previous ? index : best;
-        },
-        0
-      );
-    };
+			const destination = gsap.utils.clamp(0, maxScroll, target);
 
-    // ======================================
-    // WHEEL HANDLER
-    // ======================================
+			tween = gsap.to(window, {
+				scrollTo: {
+					y: destination,
+					autoKill: false,
+				},
 
-    const handleWheel = (event: WheelEvent) => {
-      if (window.innerWidth <= 767) return;
-      if (event.ctrlKey) return;
+				duration: reducedMotion ? 0 : duration,
 
-      const target = event.target;
+				ease: "power2.inOut",
 
-      // Giữ khả năng cuộn riêng cho các vùng cần thiết.
-      if (
-        target instanceof Element &&
-        target.closest('[data-free-scroll="true"]')
-      ) {
-        return;
-      }
+				overwrite: "auto",
 
-      const sections = getSections();
+				onComplete: () => {
+					scrolling = false;
 
-      if (sections.length < 2) return;
+					// Hạn chế cuộn quán tính
+					cooldownUntil = performance.now() + 300;
+				},
+			});
+		};
 
-      event.preventDefault();
+		// ======================================
+		// SECTION ĐANG HIỂN THỊ
+		// ======================================
 
-      const now = performance.now();
+		const findActiveIndex = (sections: HTMLElement[]) => {
+			const center = window.innerHeight * 0.5;
 
-      // Chỉ nhận một lần chuyển trang
-      // trong một chuỗi cuộn liên tục.
-      window.clearTimeout(quietTimer);
+			const found = sections.findIndex((section) => {
+				const rect = section.getBoundingClientRect();
 
-      quietTimer = window.setTimeout(() => {
-        gestureUsed = false;
-        wheelAmount = 0;
-        wheelDirection = 0;
-      }, 220);
+				return rect.top <= center && rect.bottom > center;
+			});
 
-      if (
-        scrolling ||
-        gestureUsed ||
-        now < cooldownUntil
-      ) {
-        return;
-      }
+			if (found >= 0) return found;
 
-      // Chuẩn hóa wheel pixel/line/page.
-      const multiplier =
-        event.deltaMode === 1
-          ? 16
-          : event.deltaMode === 2
-          ? window.innerHeight
-          : 1;
+			return sections.reduce((best, section, index) => {
+				const distance = Math.abs(section.getBoundingClientRect().top);
 
-      const delta = event.deltaY * multiplier;
-
-      const direction = Math.sign(delta);
+				const previous = Math.abs(sections[best].getBoundingClientRect().top);
 
-      if (!direction) return;
+				return distance < previous ? index : best;
+			}, 0);
+		};
 
-      if (
-        direction !== wheelDirection ||
-        now - lastWheelTime > 220
-      ) {
-        wheelAmount = 0;
-      }
+		// ======================================
+		// WHEEL HANDLER
+		// ======================================
 
-      wheelDirection = direction;
-      lastWheelTime = now;
+		const handleWheel = (event: WheelEvent) => {
+			if (window.innerWidth <= 767) return;
+			if (event.ctrlKey) return;
 
-      wheelAmount += Math.abs(delta);
+			const target = event.target;
 
-      if (wheelAmount < 45) return;
+			// Giữ khả năng cuộn riêng cho các vùng cần thiết.
+			if (target instanceof Element && target.closest('[data-free-scroll="true"]')) {
+				return;
+			}
 
-      wheelAmount = 0;
+			const sections = getSections();
 
-      const activeIndex = findActiveIndex(sections);
-      const section = sections[activeIndex];
+			if (sections.length < 2) return;
 
-      const rect = section.getBoundingClientRect();
+			event.preventDefault();
 
-      const vh = window.innerHeight;
-      const scroll = window.scrollY;
+			const now = performance.now();
 
-      // ===================================
-      // SECTION DÀI — XEM NỘI DUNG BÊN TRONG
-      // ===================================
+			// Chỉ nhận một lần chuyển trang
+			// trong một chuỗi cuộn liên tục.
+			window.clearTimeout(quietTimer);
 
-      if (rect.height > vh + 25) {
-        const step = vh * 0.7;
+			quietTimer = window.setTimeout(() => {
+				gestureUsed = false;
+				wheelAmount = 0;
+				wheelDirection = 0;
+			}, 220);
 
-        if (
-          direction > 0 &&
-          rect.bottom > vh + 8
-        ) {
-          const remaining = rect.bottom - vh;
+			if (scrolling || gestureUsed || now < cooldownUntil) {
+				return;
+			}
 
-          animateTo(
-            scroll + Math.min(step, remaining),
-            1.05
-          );
+			// Chuẩn hóa wheel pixel/line/page.
+			const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
 
-          return;
-        }
+			const delta = event.deltaY * multiplier;
 
-        if (
-          direction < 0 &&
-          rect.top < -8
-        ) {
-          const remaining = -rect.top;
+			const direction = Math.sign(delta);
 
-          animateTo(
-            scroll - Math.min(step, remaining),
-            1.05
-          );
+			if (!direction) return;
 
-          return;
-        }
-      }
+			if (direction !== wheelDirection || now - lastWheelTime > 220) {
+				wheelAmount = 0;
+			}
 
-      // ===================================
-      // NEXT / PREVIOUS SECTION
-      // ===================================
+			wheelDirection = direction;
+			lastWheelTime = now;
 
-      const nextIndex = gsap.utils.clamp(
-        0,
-        sections.length - 1,
-        activeIndex + direction
-      );
+			wheelAmount += Math.abs(delta);
 
-      if (nextIndex === activeIndex) return;
+			if (wheelAmount < 45) return;
 
-      const nextSection = sections[nextIndex];
+			wheelAmount = 0;
 
-      // Animation chậm và mềm hơn
-      // khi bước vào bộ sưu tập.
-      const duration =
-        nextSection.id === "bo-suu-tap"
-          ? 1.5
-          : 1.2;
+			const activeIndex = findActiveIndex(sections);
+			const section = sections[activeIndex];
 
-      animateTo(getTop(nextSection), duration);
-    };
+			const rect = section.getBoundingClientRect();
 
-    window.addEventListener(
-      "wheel",
-      handleWheel,
-      { passive: false }
-    );
+			const vh = window.innerHeight;
+			const scroll = window.scrollY;
 
-    return () => {
-      window.removeEventListener(
-        "wheel",
-        handleWheel
-      );
+			// ===================================
+			// SECTION DÀI — XEM NỘI DUNG BÊN TRONG
+			// ===================================
 
-      window.clearTimeout(quietTimer);
+			if (rect.height > vh + 25) {
+				const step = vh * 0.7;
 
-      tween?.kill();
-    };
-  }, []);
+				if (direction > 0 && rect.bottom > vh + 8) {
+					const remaining = rect.bottom - vh;
 
-  return null;
+					animateTo(scroll + Math.min(step, remaining), 1.05);
+
+					return;
+				}
+
+				if (direction < 0 && rect.top < -8) {
+					const remaining = -rect.top;
+
+					animateTo(scroll - Math.min(step, remaining), 1.05);
+
+					return;
+				}
+			}
+
+			// ===================================
+			// NEXT / PREVIOUS SECTION
+			// ===================================
+
+			const nextIndex = gsap.utils.clamp(0, sections.length - 1, activeIndex + direction);
+
+			if (nextIndex === activeIndex) return;
+
+			const nextSection = sections[nextIndex];
+
+			// Animation chậm và mềm hơn
+			// khi bước vào bộ sưu tập.
+			const duration = nextSection.id === "bo-suu-tap" ? 1.5 : 1.2;
+
+			animateTo(getTop(nextSection), duration);
+		};
+
+		window.addEventListener("wheel", handleWheel, { passive: false });
+
+		return () => {
+			window.removeEventListener("wheel", handleWheel);
+
+			window.clearTimeout(quietTimer);
+
+			tween?.kill();
+		};
+	}, []);
+
+	return null;
 }

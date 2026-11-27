@@ -72,6 +72,12 @@ function About() {
             <br />
             <em>từ thiên nhiên.</em>
           </h2>
+          <img
+            className="son-mobile-ingredient"
+            src="/images/soi-yen.png"
+            alt="Sợi yến thiên nhiên SON"
+            loading="lazy"
+            />
           <span className="son-story-line" />
 
           <h3>SON — Shape of Nest</h3>
@@ -114,7 +120,12 @@ function Essence() {
             <br />
              <em>nuôi dưỡng sức khỏe.</em>
           </h2>
-
+<img
+  className="son-mobile-ingredient"
+  src="/images/tao-do.png"
+  alt="Táo đỏ"
+  loading="lazy"
+/>
           <span className="son-story-line" />
 
           <h3>Yến sào — Món quà dinh dưỡng từ thiên nhiên</h3>
@@ -187,6 +198,13 @@ function Products() {
             <em>điều trân quý.</em>
           </h2>
 
+<img
+  className="son-mobile-ingredient"
+  src="/images/ki-tu.png"
+  alt="Kỷ tử"
+  loading="lazy"
+/>
+
           <span className="son-story-line" />
 
           <h3>Tinh tế trong từng món quà</h3>
@@ -234,7 +252,7 @@ function Products() {
           </span>
 
           <h2>
-            Bộ sưu tập
+            Bộ sản phẩm
             <br />
             <em>tinh tế.</em>
           </h2>
@@ -336,7 +354,12 @@ function Reviews() {
             <br />
              <em>từ sự chân thành.</em>
           </h2>
-
+<img
+  className="son-mobile-ingredient"
+  src="/images/duong-phen.png"
+  alt="Đường phèn"
+  loading="lazy"
+/>
           <span className="son-story-line" />
 
           <h3>Mỗi trải nghiệm, một câu chuyện.</h3>
