@@ -162,144 +162,43 @@
     min-height: max(570px, 72vh)
 }
 
-.son-gallery {
-    position: relative;
-    z-index: 9;
-    width: 90%;
-    max-width: 1550px;
-    margin: 0 auto 85px;
-    padding: 28px 0 0;
-    border-top: 1px solid #d7c9b7
-}
 
-.son-gallery-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 30px;
-    margin-bottom: 30px
-}
 
-.son-gallery-heading h3 {
-    font-family: var(--font-display);
-    font-size: clamp(29px, 3.6vw, 52px);
-    font-weight: 400;
-    letter-spacing: -.04em
-}
 
-.son-gallery-heading h3 em {
-    color: var(--son-gold);
-    font-weight: 400
-}
 
-.son-gallery-controls {
-    display: flex;
-    align-items: center;
-    gap: 12px
-}
 
-.son-gallery-counter {
-    margin-right: 12px;
-    color: #897663;
-    font-size: 11px;
-    letter-spacing: .12em
-}
 
-.son-gallery-controls button {
-    display: grid;
-    place-items: center;
-    width: 49px;
-    height: 49px;
-    border: 1px solid #bbaa95;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, .65);
-    color: var(--son-ink);
-    font-size: 23px;
-    cursor: pointer;
-    transition: background .3s, color .3s
-}
 
-.son-gallery-controls button:hover:not(:disabled) {
-    background: var(--son-ink);
-    color: white
-}
 
-.son-gallery-controls button:disabled {
-    opacity: .3;
-    cursor: not-allowed
-}
 
-.son-gallery-grid {
-    display: flex;
-    gap: 22px
-}
 
-.son-gallery-card {
-    flex: 1 1 0;
-    min-width: 0;
-    animation: son-card-enter .4s ease both
-}
 
-@keyframes son-card-enter {
-    from {
-        opacity: 0;
-        transform: translateY(15px)
-    }
 
-    to {
-        opacity: 1;
-        transform: translateY(0)
-    }
-}
 
-.son-gallery-photo {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    background: #e7e0d5
-}
 
-.son-gallery-photo img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .6s ease
-}
 
-.son-gallery-card:hover img {
-    transform: scale(1.045)
-}
 
-.son-gallery-photo>span {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(248, 246, 240, .9);
-    padding: 9px 12px;
-    font-size: 9px;
-    letter-spacing: .16em
-}
 
-.son-gallery-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 18px 0 24px;
-    border-bottom: 1px solid #d7c9b7
-}
 
-.son-gallery-meta h4 {
-    font-family: var(--font-display);
-    font-size: 23px;
-    font-weight: 400
-}
 
-.son-gallery-meta span {
-    color: #917d66;
-    font-size: 12px
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* REVIEWS */
 .son-review-area {
@@ -443,7 +342,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-    min-width: 0,
+    min-width: 0;
 }
 
 .son-contact-right .son-field label,
@@ -691,28 +590,15 @@
         min-height: 680px
     }
 
-    .son-gallery {
-        width: 88%;
-        margin-bottom: 60px
-    }
 
-    .son-gallery-heading {
-        align-items: flex-start;
-        flex-direction: column
-    }
 
-    .son-gallery-controls button {
-        width: 43px;
-        height: 43px
-    }
 
-    .son-gallery-grid {
-        gap: 12px
-    }
 
-    .son-gallery-meta h4 {
-        font-size: 20px
-    }
+
+
+
+
+
 
     .son-review-area {
         padding: 19px;
@@ -770,19 +656,7 @@
     }
 }
 
-@media(prefers-reduced-motion:reduce) {
-    .son-gallery-card {
-        animation: none
-    }
 
-    .son-gallery-photo img,
-    .son-gallery-controls button,
-    .son-contact-right input,
-    .son-contact-right textarea,
-    .son-form-submit-row button {
-        transition: none
-    }
-}
 
 /* ==========================================
    SON — SEPARATE PRODUCT COLLECTION
@@ -883,43 +757,19 @@
 
 /* GALLERY */
 
-.son-collection-section .son-gallery {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
 
-.son-collection-section .son-gallery-heading {
-    margin-bottom: 20px;
-}
 
-.son-collection-section .son-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
 
-.son-collection-section .son-gallery-card {
-    min-width: 0;
-}
 
-.son-collection-section .son-gallery-photo {
-    position: relative;
-    height: clamp(180px, 22vw, 280px);
-    overflow: hidden;
-}
 
-.son-collection-section .son-gallery-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
 
-.son-collection-section .son-gallery-card:hover img {
-    transform: scale(1.04);
-}
+
+
+
+
+
+
+
 
 /* TABLET */
 
@@ -929,9 +779,7 @@
         align-items: flex-start;
     }
 
-    .son-collection-section .son-gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+
 }
 
 /* MOBILE */
@@ -954,13 +802,9 @@
         font-size: clamp(40px, 10vw, 60px);
     }
 
-    .son-collection-section .son-gallery-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .son-collection-section .son-gallery-photo {
-        height: 240px;
-    }
+
+
 }
 
 /* TYPOGRAPHY — SON */
@@ -1451,59 +1295,21 @@
         line-height: 1.8;
     }
 
-    .son-gallery,
-    .son-gallery-heading {
-        width: 100%;
-        max-width: 100%;
-    }
 
-    .son-gallery-heading {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
 
-        gap: 12px;
-        flex-wrap: wrap;
-    }
 
-    .son-gallery-heading h3 {
-        font-size: clamp(26px,
-                7vw,
-                34px) !important;
-    }
 
-    .son-gallery-grid {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) !important;
 
-        width: 100% !important;
-        gap: 24px !important;
-    }
 
-    .son-gallery-card {
-        width: 100%;
-        min-width: 0;
-    }
 
-    .son-gallery-photo {
-        width: 100%;
-        height: auto !important;
-        aspect-ratio: 4 / 3;
 
-        overflow: hidden;
-    }
 
-    .son-gallery-photo img {
-        display: block;
-        width: 100%;
-        height: 100%;
 
-        object-fit: cover;
-    }
 
-    .son-gallery-meta {
-        padding-top: 14px;
-    }
+
+
+
+
 
     /* 09 — BUTTONS */
 
@@ -1542,6 +1348,7 @@
         width: 65vw !important;
     }
 }
+
 @keyframes sonIngredientFloat {
     0% {
         transform:
@@ -1619,5 +1426,336 @@
         animation: none !important;
         transform: none !important;
         will-change: auto;
+    }
+}
+
+/* ==========================================
+   SON — FIXED PRODUCT CAROUSEL
+   ONE ROW ONLY
+========================================== */
+
+
+
+/* GALLERY HEADER */
+
+
+
+
+
+
+
+
+
+/* ONE ROW OF PRODUCTS */
+
+
+
+/* CARDS */
+
+
+
+/* IMAGE */
+
+
+
+
+
+
+
+/* PRODUCT NUMBER */
+
+
+
+/* CARD DESCRIPTION */
+
+
+
+
+
+
+
+/* SMALL HELPER TEXT */
+
+
+
+/* TABLET */
+
+
+
+/* MOBILE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   SON — PRODUCT IMAGE 9:16
+   NO EMPTY BORDERS
+========================================== */
+
+
+
+/* Thẻ sản phẩm */
+
+
+/* Khung ôm sát ảnh 9:16 */
+
+
+/* Ảnh phủ kín toàn bộ khung */
+
+
+/* Mã sản phẩm nổi trên ảnh */
+
+
+/* Phần tên nằm sát bên dưới ảnh */
+
+
+/* =====================================================
+   SON — BỘ SƯU TẬP | CAROUSEL DUY NHẤT
+   Ảnh dùng chiều cao tự nhiên: KHÔNG CẮT CHỮ.
+   Bố cục: desktop 5 / laptop 4 / tablet 3-2 / mobile 1.
+   Không thêm quy tắc .son-gallery khác ở phía dưới.
+===================================================== */
+
+#bo-suu-tap .son-gallery {
+    position: relative;
+    z-index: 9;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 24px 0 0;
+    border-top: 1px solid var(--son-border);
+    overflow: visible;
+}
+
+#bo-suu-tap .son-gallery-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 0 0 26px;
+}
+
+#bo-suu-tap .son-gallery-heading h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(29px, 3.5vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+#bo-suu-tap .son-gallery-heading h3 em {
+    color: var(--son-gold);
+    font-weight: 400;
+}
+
+#bo-suu-tap .son-gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+#bo-suu-tap .son-gallery-counter {
+    margin-right: 8px;
+    color: #897663;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+}
+
+#bo-suu-tap .son-gallery-controls button {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #bbaa95;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.65);
+    color: var(--son-ink);
+    font-size: 23px;
+    cursor: pointer;
+    transition: background-color 0.25s, color 0.25s, opacity 0.25s;
+}
+
+#bo-suu-tap .son-gallery-controls button:hover:not(:disabled) {
+    background: var(--son-ink);
+    color: #fff;
+}
+
+#bo-suu-tap .son-gallery-controls button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Không dùng inline gridTemplateColumns trong JSX. */
+#bo-suu-tap .son-gallery-grid-fixed {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#bo-suu-tap .son-gallery-card {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    animation: son-card-enter 0.35s ease both;
+}
+
+/* Khung co theo chính kích thước ảnh gốc, không ép 9:16. */
+#bo-suu-tap .son-gallery-photo {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 14px;
+    background: transparent;
+    line-height: 0;
+}
+
+#bo-suu-tap .son-gallery-photo img {
+    position: static;
+    display: block;
+    width: 100%;
+    height: 359px;
+    max-width: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+    object-position: center;
+    border: 0;
+    border-radius: 0;
+    transform: none;
+    transition: none;
+}
+
+/* Ẩn nhãn nổi để không che chữ có sẵn trong ảnh quảng cáo. */
+#bo-suu-tap .son-gallery-photo>span {
+    display: none;
+}
+
+#bo-suu-tap .son-gallery-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    padding: 13px 0 17px;
+    margin: 0;
+    border-bottom: 1px solid var(--son-border);
+}
+
+#bo-suu-tap .son-gallery-meta h4 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(17px, 1.6vw, 23px);
+    font-weight: 400;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+#bo-suu-tap .son-gallery-meta>span {
+    color: #917d66;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#bo-suu-tap .son-gallery-hint {
+    margin: 18px 0 0;
+    color: #9f8b73;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+@keyframes son-card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1500px) {
+    #bo-suu-tap .son-gallery-grid-fixed {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1200px) {
+    #bo-suu-tap .son-gallery-grid-fixed {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    #bo-suu-tap .son-gallery-grid-fixed {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    #bo-suu-tap .son-gallery-heading {
+        align-items: flex-start;
+    }
+
+    #bo-suu-tap .son-gallery-controls {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    #bo-suu-tap .son-gallery-grid-fixed {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #bo-suu-tap .son-gallery-photo {
+        max-width: 340px;
+        margin-inline: auto;
+    }
+
+    #bo-suu-tap .son-gallery-meta {
+        max-width: 340px;
+        margin-inline: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #bo-suu-tap .son-gallery-card {
+        animation: none;
+    }
+
+    #bo-suu-tap .son-gallery-controls button {
+        transition: none;
     }
 }
