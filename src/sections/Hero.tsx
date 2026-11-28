@@ -31,9 +31,9 @@ export default function Hero() {
 					<span className="small-line" />
 
 					<p>
-						Từ vẻ đẹp nguyên bản của thiên nhiên,
+						Cảm ơn Bạn đã lựa chọn S.O.N làm người đồng hành trên hành trình chăm sóc sức khoẻ.
 						<br />
-						SON gửi gắm sự tinh tế và sức khỏe trong từng món quà.
+						S.O.N hi vọng, mỗi thức quà từ tổ Yến nhà S.O.N, sẽ vun đắp cho sự trẻ - đẹp của Bạn thêm vẹn tròn.
 					</p>
 
 					<a className="explore-button" href="#ve-son">
